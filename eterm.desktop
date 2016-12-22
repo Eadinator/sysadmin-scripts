@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/Eterm -x --buttonbar no --scrollbar no -e sudo bash /etc/xdg/autostart/apt.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_GB]=Update
+Name=Update
+Comment[en_GB]=
+Comment=
