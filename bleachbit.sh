@@ -1,3 +1,3 @@
 #!/bin/bash
 
-bleachbit --list-cleaners | grep '^google_chrome' | xargs --no-run-if-empty bleachbit --clean
+bleachbit --list-cleaners | egrep '^(google_chrome|firefox)' | xargs --no-run-if-empty bleachbit --clean >/dev/null
