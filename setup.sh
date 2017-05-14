@@ -2,7 +2,7 @@
 
 set -e
 
-AUTOSTART_DIR="$HOME/.config/autostart"
+AUTOSTART_DIR="~/.config/autostart"
 GITHUB_URL="https://raw.githubusercontent.com/Eadinator/sysadmin-scripts/master"
 
 sudo apt update
