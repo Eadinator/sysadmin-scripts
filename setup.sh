@@ -8,6 +8,7 @@ GITHUB_URL="https://raw.githubusercontent.com/Eadinator/sysadmin-scripts/master"
 sudo apt update
 
 sudo apt install eterm gdebi-core
+sudo apt purge xul-ext-ubufox
 
 wget -O /tmp/bleachbit.deb https://download.bleachbit.org/bleachbit_1.12_all_ubuntu1604.deb
 sudo gdebi /tmp/bleachbit.deb
