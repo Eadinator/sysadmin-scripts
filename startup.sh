@@ -1,4 +1,4 @@
 #!/bin/bash
 
-bash $HOME/.config/autostart/bleachbit.sh
-sudo bash $HOME/.config/autostart/apt.sh
+bash ~/.config/autostart/bleachbit.sh
+sudo bash ~/.config/autostart/apt.sh
