@@ -12,6 +12,9 @@ sudo apt install eterm gdebi-core
 wget -O /tmp/bleachbit.deb https://download.bleachbit.org/bleachbit_1.12_all_ubuntu1604.deb
 sudo gdebi /tmp/bleachbit.deb
 
+wget -O - https://cpanmin.us | sudo perl - App::cpanminus
+sudo cpanm Version::Compare
+
 mkdir -p $AUTOSTART_DIR
 
 wget -P $AUTOSTART_DIR $GITHUB_URL/eterm.desktop
