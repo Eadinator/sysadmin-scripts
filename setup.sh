@@ -9,7 +9,7 @@ sudo apt update
 
 sudo apt install eterm
 
-wget -O /tmp/bleachbit.deb https://www.bleachbit.org/download/file/t?file=bleachbit_1.12_all_ubuntu1604.deb
+wget -O /tmp/bleachbit.deb https://download.bleachbit.org/bleachbit_1.12_all_ubuntu1604.deb
 sudo dpkg -i /tmp/bleachbit.deb
 
 mkdir -p $AUTOSTART_DIR
