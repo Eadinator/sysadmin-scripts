@@ -33,18 +33,20 @@ echo -e "\nInstall Version::Compare..."
 
 sudo cpanm Version::Compare
 
-echo -e "\nWGET gnome-shell-extension-installer..."
-
-wget --no-verbose -P $AUTOSTART_DIR "https://github.com/brunelli/gnome-shell-extension-installer/raw/master/gnome-shell-extension-installer"
-
 echo -e "\nMake autostart dir..."
 
 mkdir -p $AUTOSTART_DIR
 
+echo -e "\nWGET gnome-shell-extension-installer..."
+
+FILE=gnome-shell-extension-installer; wget --no-verbose -O $AUTOSTART_DIR/$FILE "https://github.com/brunelli/gnome-shell-extension-installer/raw/master/$FILE"
+
 echo -e "\nWGET Scripts..."
 
-wget --no-verbose -P $AUTOSTART_DIR $GITHUB_URL/eterm.desktop
-wget --no-verbose -P $AUTOSTART_DIR $GITHUB_URL/startup.sh
-wget --no-verbose -P $AUTOSTART_DIR $GITHUB_URL/bleachbit.sh
-wget --no-verbose -P $AUTOSTART_DIR $GITHUB_URL/apt.sh
-wget --no-verbose -P $AUTOSTART_DIR $GITHUB_URL/filter_pkglist.pl
+FILE=eterm.desktop;     wget --no-verbose -O $AUTOSTART_DIR/$FILE $GITHUB_URL/$FILE
+FILE=startup.sh;        wget --no-verbose -O $AUTOSTART_DIR/$FILE $GITHUB_URL/$FILE
+FILE=bleachbit.sh;      wget --no-verbose -O $AUTOSTART_DIR/$FILE $GITHUB_URL/$FILE
+FILE=apt.sh;            wget --no-verbose -O $AUTOSTART_DIR/$FILE $GITHUB_URL/$FILE
+FILE=filter_pkglist.pl; wget --no-verbose -O $AUTOSTART_DIR/$FILE $GITHUB_URL/$FILE
+
+echo -e "\nAll Done."
