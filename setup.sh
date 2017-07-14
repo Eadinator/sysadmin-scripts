@@ -49,4 +49,6 @@ FILE=bleachbit.sh;      wget --no-verbose -O $AUTOSTART_DIR/$FILE $GITHUB_URL/$F
 FILE=apt.sh;            wget --no-verbose -O $AUTOSTART_DIR/$FILE $GITHUB_URL/$FILE
 FILE=filter_pkglist.pl; wget --no-verbose -O $AUTOSTART_DIR/$FILE $GITHUB_URL/$FILE
 
+FILE=cof_white-orange_hex.png; wget --no-verbose -O $AUTOSTART_DIR/$FILE $GITHUB_URL/$FILE
+
 echo -e "\nAll Done."
