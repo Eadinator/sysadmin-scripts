@@ -48,6 +48,7 @@ FILE=startup.sh;        wget --no-verbose -O $AUTOSTART_DIR/$FILE $GITHUB_URL/$F
 FILE=bleachbit.sh;      wget --no-verbose -O $AUTOSTART_DIR/$FILE $GITHUB_URL/$FILE
 FILE=apt.sh;            wget --no-verbose -O $AUTOSTART_DIR/$FILE $GITHUB_URL/$FILE
 FILE=filter_pkglist.pl; wget --no-verbose -O $AUTOSTART_DIR/$FILE $GITHUB_URL/$FILE
+FILE=extensions.sh;     wget --no-verbose -O $AUTOSTART_DIR/$FILE $GITHUB_URL/$FILE
 
 FILE=cof_white-orange_hex.png; wget --no-verbose -O $AUTOSTART_DIR/$FILE $GITHUB_URL/$FILE
 
