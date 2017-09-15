@@ -1,10 +1,10 @@
 [Desktop Entry]
 Type=Application
-Exec=/usr/bin/Eterm -x --buttonbar no --scrollbar no -e bash -c "bash ~/.config/autostart/startup.sh"
+Exec=gnome-terminal --hide-menubar -- bash -c "~/.config/autostart/startup.sh"
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
-Name[en_GB]=Eterm
-Name=Eterm
+Name[en_GB]=Startup
+Name=Startup
 Comment[en_GB]=
 Comment=
