@@ -1,4 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=TaskBar
-Exec=gnome-shell-extension-tool -e TaskBar\@zpydr
