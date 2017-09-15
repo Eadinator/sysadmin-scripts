@@ -22,3 +22,7 @@ gnome-shell-extension-tool -e dash-to-panel@jderose9.github.com
 gnome-shell-extension-tool -e arc-menu@linxgem33.com
 gnome-shell-extension-tool -e nohotcorner@azuri.free.fr
 gnome-shell-extension-tool -e TopIcons@phocean.net
+echo
+
+echo '+ Finished +'
+sleep 3
