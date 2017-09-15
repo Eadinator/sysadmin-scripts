@@ -2,10 +2,6 @@
 
 DIR=~/.config/autostart
 
-echo '+ Performing bleachbit clean...'
-bleachbit --list-cleaners | egrep '^(google_chrome|firefox)' | xargs --no-run-if-empty bleachbit --clean >/dev/null
-echo
-
 echo '+ Updating packages...'
 sudo apt -qq update && sudo apt --purge --yes --verbose-versions full-upgrade
 echo
