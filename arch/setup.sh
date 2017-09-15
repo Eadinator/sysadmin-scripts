@@ -2,7 +2,7 @@
 
 # Run as non-root user, without sudo
 
-sudo bash -c "printf '%s\n' '%wheel ALL=(ALL) ALL' '%wheel ALL=(root) NOPASSWD: /usr/bin/pacman, /usr/bin/pacaur' >> /etc/sudoers"
+sudo bash -c "printf '%s\n' '%wheel ALL=(ALL) ALL' '%wheel ALL=(root) NOPASSWD: /usr/bin/pacman' >> /etc/sudoers"
 
 sudo passwd -dl root
 
