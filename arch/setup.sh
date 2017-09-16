@@ -24,6 +24,33 @@ epson-inkjet-printer-201207w
 
 pacaur -Qq gnome-shell-extension-manjaro-update pamac | xargs --no-run-if-empty pacaur -R
 
+GITHUB_URL=https://raw.githubusercontent.com/Eadinator/sysadmin-scripts/master
+AUTOSTART=~/.config/autostart
+BIN=/usr/local/bin
+
+FILE=startup.desktop
+REMOTE=$GITHUB_URL/$FILE
+LOCAL=$AUTOSTART/$FILE
+
+sudo wget --no-verbose -O $LOCAL $REMOTE
+sudo chown root:root $LOCAL
+sudo chmod 444 $LOCAL
+
+SCRIPTS=(
+arch/startup.sh
+arch/kernels_to_install.pl
+arch/kernels_to_remove.pl
+)
+
+for SCRIPT in ${SCRIPTS[@]}; do
+	REMOTE=$GITHUB_URL/$SCRIPT
+	LOCAL=$BIN/$(basename $SCRIPT)
+
+	sudo wget --no-verbose -O $LOCAL $REMOTE
+	sudo chown root:root $LOCAL
+	sudo chmod 555 $LOCAL
+done
+
 # Global Dark Theme - off
 # GTK+ Theme - Arc-Maia
 # Icons - Adwaita (default)
