@@ -5,6 +5,7 @@
 sudo bash -c "rm /etc/sudoers.d/*"
 
 sudo bash -c "printf '%s\n' '%wheel ALL=(ALL) ALL' '%wheel ALL=(root) NOPASSWD: /usr/local/bin/startup.sh' > /etc/sudoers.d/01-custom"
+sudo chmod 440 /etc/sudoers.d/01-custom
 
 sudo passwd -dl root
 
