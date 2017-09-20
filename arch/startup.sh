@@ -3,7 +3,7 @@
 DIR=/usr/local/bin
 
 if [[ $EUID -eq 0 ]]; then
-        echo '%wheel ALL=(root) NOPASSWD: /usr/bin/pacman, /usr/bin/rm /etc/sudoers.d/02-custom' > /etc/sudoers.d/02-custom
+        echo "%wheel ALL=(root) NOPASSWD: $(which pacman), $(which rm) /etc/sudoers.d/02-custom" > /etc/sudoers.d/02-custom
 	chmod 440 /etc/sudoers.d/02-custom
 
         sudo -u $SUDO_USER $DIR/startup.sh
