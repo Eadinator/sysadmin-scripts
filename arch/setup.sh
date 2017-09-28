@@ -2,15 +2,18 @@
 
 # Run as non-root user, without sudo
 
-sudo bash -c "rm /etc/sudoers.d/*"
+if [ "$(sudo ls -A /etc/sudoers.d)" ]; then
+	echo '/etc/sudoers.d not empty, exiting...'
+	exit 1
+fi
 
 sudo bash -c "printf '%s\n' '%wheel ALL=(ALL) ALL' '%wheel ALL=(root) NOPASSWD: /usr/local/bin/startup.sh' > /etc/sudoers.d/01-custom"
 sudo chmod 440 /etc/sudoers.d/01-custom
 
 sudo passwd -dl root
 
-sudo sed -i.bak '/WaylandEnable/c\WaylandEnable=true' /etc/gdm/custom.conf
-sudo sed -i.bak '/VerbosePkgLists/c\VerbosePkgLists' /etc/pacman.conf
+sudo cp /etc/fstab /etc/fstab.bak
+sudo bash -c "grep -v swap /etc/fstab.bak > /etc/fstab"
 
 sudo pacman -Syu --needed pacaur
 
