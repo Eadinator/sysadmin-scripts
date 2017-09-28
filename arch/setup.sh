@@ -12,8 +12,10 @@ sudo chmod 440 /etc/sudoers.d/01-custom
 
 sudo passwd -dl root
 
-sudo cp /etc/fstab /etc/fstab.bak
-sudo bash -c "grep -v swap /etc/fstab.bak > /etc/fstab"
+if [ "$(swapon --show)" ]; then
+	echo 'swap present, exiting...'
+	exit 1
+fi
 
 sudo pacman -Syu --needed pacaur
 
