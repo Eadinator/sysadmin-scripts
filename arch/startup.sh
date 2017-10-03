@@ -2,6 +2,16 @@
 
 DIR=/usr/local/bin
 
+try()
+{
+	"$@"
+
+	if [ $? -ne 0 ]; then
+		aws sns publish --topic-arn $SYSADMIN_AWS_SNS_TOPIC_ARN --message "Command on $HOSTNAME failed: $*"
+		exit 1
+	fi
+}
+
 if [[ $EUID -eq 0 ]]; then
         echo "%wheel ALL=(root) NOPASSWD: $(which pacman), $(which rm) /etc/sudoers.d/02-custom" > /etc/sudoers.d/02-custom
 	chmod 440 /etc/sudoers.d/02-custom
@@ -9,7 +19,7 @@ if [[ $EUID -eq 0 ]]; then
         sudo -u $SUDO_USER $DIR/startup.sh
 else
 	echo '+ Updating packages...'
-	pacaur --noconfirm -Syu
+	try pacaur --noconfirm -Syu
 	echo
 
 	echo '+ Installing latest kernel...'
