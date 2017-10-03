@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=gnome-terminal --hide-menubar -- sudo /usr/local/bin/startup.sh
+Exec=urxvt -bl +sb -bg black -fg white -e sudo /usr/local/bin/startup.sh
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
