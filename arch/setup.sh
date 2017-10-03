@@ -20,7 +20,8 @@ fi
 sudo pacman -Syu --needed pacaur
 
 pacaur -S --needed \
-vim
+vim \
+rxvt-unicode
 
 # Deps for building AUR packages
 pacaur -S --needed base-devel
@@ -30,7 +31,10 @@ gnome-shell-extension-installer \
 vi-vim-symlink \
 epson-inkjet-printer-201207w
 
-pacaur -Qq gnome-shell-extension-manjaro-update pamac | xargs --no-run-if-empty pacaur -R
+pacaur -Qq \
+gnome-shell-extension-manjaro-update \
+pamac \
+| xargs --no-run-if-empty pacaur -R
 
 GITHUB_URL=https://raw.githubusercontent.com/Eadinator/sysadmin-scripts/master
 AUTOSTART=~/.config/autostart
