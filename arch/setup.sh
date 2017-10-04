@@ -2,9 +2,8 @@
 
 # Run as non-root user, without sudo
 
-if [ "$(sudo ls -A /etc/sudoers.d)" ]; then
-	echo '/etc/sudoers.d not empty, exiting...'
-	exit 1
+if [ "$(sudo ls -A /etc/sudoers.d/)" ]; then
+	read -p "Directory /etc/sudoers.d/ not empty. Press enter to continue... "
 fi
 
 sudo bash -c "printf '%s\n' '%wheel ALL=(ALL) ALL' '%wheel ALL=(root) NOPASSWD: /usr/local/bin/startup.sh' > /etc/sudoers.d/01-custom"
@@ -13,21 +12,21 @@ sudo chmod 440 /etc/sudoers.d/01-custom
 sudo passwd -dl root
 
 if [ "$(swapon --show)" ]; then
-	echo 'swap present, exiting...'
-	exit 1
+	read -p "Swap present. Press enter to continue... "
 fi
 
-if [ -f ~/.pam_environment ]; then
-	echo '.pam_environment exists, exiting...'
-	exit 1
+PAM_ENV=~/.pam_environment
+
+if [ -f PAM_ENV ]; then
+	read -p "File $PAM_ENV exists. Press enter to continue... "
 fi
 
-read -p 'AWS_ACCESS_KEY_ID: ' AWS_ACCESS_KEY_ID
-read -p 'AWS_SECRET_ACCESS_KEY: ' AWS_SECRET_ACCESS_KEY
-read -p 'AWS_DEFAULT_REGION: ' AWS_DEFAULT_REGION
-read -p 'SYSADMIN_AWS_SNS_TOPIC_ARN: ' SYSADMIN_AWS_SNS_TOPIC_ARN
+read -p "AWS_ACCESS_KEY_ID: " AWS_ACCESS_KEY_ID
+read -p "AWS_SECRET_ACCESS_KEY: " AWS_SECRET_ACCESS_KEY
+read -p "AWS_DEFAULT_REGION: " AWS_DEFAULT_REGION
+read -p "SYSADMIN_AWS_SNS_TOPIC_ARN: " SYSADMIN_AWS_SNS_TOPIC_ARN
 
-touch ~/.pam_environment
+> ~/.pam_environment
 chmod 600 ~/.pam_environment
 
 echo >> ~/.pam_environment AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
