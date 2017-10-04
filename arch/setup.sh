@@ -54,31 +54,40 @@ gnome-shell-extension-manjaro-update \
 pamac \
 | xargs --no-run-if-empty pacaur -R
 
-GITHUB_URL=https://raw.githubusercontent.com/Eadinator/sysadmin-scripts/master
+GITHUB_URL=https://raw.githubusercontent.com/Eadinator/sysadmin-scripts/master/arch
 AUTOSTART=~/.config/autostart
 BIN=/usr/local/bin
 
-FILE=startup.desktop
-REMOTE=$GITHUB_URL/$FILE
-LOCAL=$AUTOSTART/$FILE
-
-sudo wget --no-verbose -O $LOCAL $REMOTE
-sudo chown root:root $LOCAL
-sudo chmod 444 $LOCAL
-
-SCRIPTS=(
-arch/startup.sh
-arch/kernels_to_install.pl
-arch/kernels_to_remove.pl
+FILES=(
+desktop/startup.desktop
+script/startup.sh
+script/kernels_to_install.pl
+script/kernels_to_remove.pl
 )
 
-for SCRIPT in ${SCRIPTS[@]}; do
-	REMOTE=$GITHUB_URL/$SCRIPT
-	LOCAL=$BIN/$(basename $SCRIPT)
+for FILE in ${FILES[@]}; do
+	DIRNAME=$(dirname $FILE)
+	BASENAME=$(basename $FILE)
+	LOCAL_DIR=
+	MODE=
+
+	if [ "$DIRNAME" = "desktop" ]; then
+		LOCAL_DIR=$AUTOSTART
+		MODE=444
+	elif [ "$DIRNAME" = "script" ]; then
+		LOCAL_DIR=$BIN
+		MODE=555
+	else
+		echo "Error: unknown dirname '$DIRNAME' for file '$FILE', exiting..."
+		exit 1
+	fi
+
+	REMOTE=$GITHUB_URL/$BASENAME
+	LOCAL=$LOCAL_DIR/$BASENAME
 
 	sudo wget --no-verbose -O $LOCAL $REMOTE
 	sudo chown root:root $LOCAL
-	sudo chmod 555 $LOCAL
+	sudo chmod $MODE $LOCAL
 done
 
 # Global Dark Theme - off
