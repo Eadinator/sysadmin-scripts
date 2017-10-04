@@ -17,11 +17,30 @@ if [ "$(swapon --show)" ]; then
 	exit 1
 fi
 
+if [ -f ~/.pam_environment ]; then
+	echo '.pam_environment exists, exiting...'
+	exit 1
+fi
+
+read -p 'AWS_ACCESS_KEY_ID: ' AWS_ACCESS_KEY_ID
+read -p 'AWS_SECRET_ACCESS_KEY: ' AWS_SECRET_ACCESS_KEY
+read -p 'AWS_DEFAULT_REGION: ' AWS_DEFAULT_REGION
+read -p 'SYSADMIN_AWS_SNS_TOPIC_ARN: ' SYSADMIN_AWS_SNS_TOPIC_ARN
+
+touch ~/.pam_environment
+chmod 600 ~/.pam_environment
+
+echo >> ~/.pam_environment AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+echo >> ~/.pam_environment AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+echo >> ~/.pam_environment AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION
+echo >> ~/.pam_environment SYSADMIN_AWS_SNS_TOPIC_ARN=$SYSADMIN_AWS_SNS_TOPIC_ARN
+
 sudo pacman -Syu --needed pacaur
 
 pacaur -S --needed \
 vim \
-rxvt-unicode
+rxvt-unicode \
+aws-cli
 
 # Deps for building AUR packages
 pacaur -S --needed base-devel
