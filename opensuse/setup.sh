@@ -141,15 +141,13 @@ fi
 
 USER_NAME=$1
 
-USER_HOME=$(getent passwd $USER_NAME)
+USER_HOME=$(getent passwd $USER_NAME | cut -f6 -d:)
 
 if [ -z "$USER_HOME" ]; then
 	echo 'Invalid username'
 
 	exit 1
 fi
-
-echo
 
 sudoersd
 rootpw
