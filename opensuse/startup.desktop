@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=urxvt -bl +sb -bg black -fg white -e sudo /usr/local/bin/startup.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_GB]=Startup
+Name=Startup
+Comment[en_GB]=
+Comment=
