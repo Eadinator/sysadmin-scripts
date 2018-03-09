@@ -98,6 +98,8 @@ get_scripts()
 	script/startup.sh
 	)
 
+	mkdir -p $AUTOSTART
+
 	for FILE in ${FILES[@]}; do
 		DIRNAME=$(dirname $FILE)
 		BASENAME=$(basename $FILE)
